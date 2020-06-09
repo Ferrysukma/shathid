@@ -32,12 +32,12 @@
 
     @yield('addOnCSS')
 
-    <!-- =======================================================
-    * Template Name: Multi - v2.0.0
-    * Template URL: https://bootstrapmade.com/multi-responsive-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
+    <style>
+        .form-group .error {
+            text-align: left !important;
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -117,6 +117,8 @@
     <script src="{{asset('assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
     <script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
     @yield('addOnJS')
 

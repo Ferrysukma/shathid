@@ -49,51 +49,25 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/longsleeve.jpg" alt="Gambar"></div>
-                        <h4><a href="/product/1">Lorem Ipsum</a></h4>
-                        <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            @foreach ($products as $product)
+                @if ($product->product_category == 'Long Sleeve')
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <a href="/product/{{$product->product_id}}">
+                            <div class="icon-box">
+                                <div class="icon"><img src="{{asset('image/'.json_decode($product->product_image)[0])}}" alt="Gambar"></div>
+                                <h4><a href="/product/{{$product->product_id}}">{{$product->product_name}}</a></h4>
+                                <p>{{$product->product_stock}}</p>
+                                <p class="label-price">Rp. {{number_format($product->product_price,0,'.','.')}}</p>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/longsleeve.jpg" alt="Gambar"></div>
-                        <h4><a href="/product/1">Sed ut perspiciatis</a></h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/longsleeve.jpg" alt="Gambar"></div>
-                        <h4><a href="/product/1">Magni Dolores</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/longsleeve.jpg" alt="Gambar"></div>
-                        <h4><a href="/product/1">Magni Dolores</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                    </div>
-                </a>
-            </div>
-
+                @endif
+            @endforeach
         </div>
 
         <div class="row row-btn-showmore">
             <div class="col-lg-12 col-btn-showmore">
-            <a href="#" class="get-started-btn">Show More</a>
+            <a href="/product/category/long" class="get-started-btn">Show More</a>
             </div>
         </div>
 
@@ -111,51 +85,25 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/kaos.jpg" alt="Gambar"></div>
-                        <h4><a href="/product/1">Lorem Ipsum</a></h4>
-                        <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            @foreach ($products as $product)
+                @if ($product->product_category == 'Short Sleeve')
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <a href="/product/{{$product->product_id}}">
+                            <div class="icon-box">
+                                <div class="icon"><img src="{{asset('image/'.json_decode($product->product_image)[0])}}" alt="{{$product->product_name}}"></div>
+                                <h4><a href="/product/{{$product->product_id}}">{{$product->product_name}}</a></h4>
+                                <p>{{$product->product_stock}}</p>
+                                <p class="label-price">Rp. {{number_format($product->product_price,0,'.','.')}}</p>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/kaos.jpg" alt="Gambar"></div>
-                        <h4><a href="">Sed ut perspiciatis</a></h4>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/kaos.jpg" alt="Gambar"></div>
-                        <h4><a href="/product/1">Magni Dolores</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                <a href="/product/1">
-                    <div class="icon-box">
-                        <div class="icon"><img src="assets/img/kaos.jpg" alt="Gambar"></div>
-                        <h4><a href="/product/1">Magni Dolores</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                    </div>
-                </a>
-            </div>
-
+                @endif
+            @endforeach
         </div>
 
         <div class="row row-btn-showmore">
             <div class="col-lg-12 col-btn-showmore">
-            <a href="#" class="get-started-btn">Show More</a>
+            <a href="/product/category/short" class="get-started-btn">Show More</a>
             </div>
         </div>
 

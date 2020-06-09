@@ -10,10 +10,32 @@ class HomeController extends Controller
     public function index()
     {
         // Get Image Banner
-        $banner = DB::table('banner')->get();
+        $banner  = DB::table('banner')->get();
+        // Get Product
+        $product = DB::table('product')->get();
 
         return view('home.index', [
-            'banners'   => $banner
+            'banners'   => $banner,
+            'products'  => $product
+        ]);
+    }
+
+    public function product_category($categories)
+    {
+        if ($categories == 'short') {
+            $category   = 'Short Sleeve';
+        } elseif ($categories == 'long') {
+            $category   = 'Long Sleeve';
+        } else {
+            $category   = '';
+        }
+
+        // Get Detail Product
+        $product      = DB::table('product')->where('product_category', $category)->get();
+
+        return view('home.product_category', [
+            'products' => $product,
+            'category' => $category
         ]);
     }
 }

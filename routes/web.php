@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 // });
 Route::get('/', 'HomeController@index');
+Route::get('/product/category/{categories}', 'HomeController@product_category');
 
 // Product
 Route::get('/product/{id}', 'ProductController@index');
+Route::post('/get_city', 'ProductController@get_city');
+Route::post('/get_courier', 'ProductController@get_courier');
 
 
 // Admin
