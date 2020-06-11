@@ -57,16 +57,18 @@
                 <div class="footer-info">
                 <h3>Contact</h3>
                 <p>
-                    Jalan Telekomunikasi No. 001 <br>
-                    Bojong Soang, Kabupaten Bandung<br>
-                    Jawa Barat<br><br>
-                    <strong>Phone:</strong> 082247899978<br>
-                    <strong>Email:</strong> shath.id@gmail.com<br>
+                    <?= nl2br($profile->profile_address) ?> <br>
+                    {{$profile->profile_city}}, {{$profile->profile_province}}<br><br>
+                    <strong>Phone:</strong> {{$profile->profile_phone}}<br>
+                    <strong>Email:</strong> {{$profile->profile_email}}<br>
                 </p>
                 <div class="social-links mt-3">
-                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    @if ($profile->profile_facebook != null)
+                        <a href="{{$profile->profile_facebook}}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    @endif
+                    @if ($profile->profile_instagram != null)
+                        <a href="{{$profile->profile_instagram}}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    @endif
                 </div>
                 </div>
             </div>

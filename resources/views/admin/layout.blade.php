@@ -88,7 +88,16 @@
 					<ul class="nav">
 						<li><a href="/admin/home" class="" id="nav_home"><i class="lnr lnr-home"></i> <span>Home</span></a></li>
 						<li><a href="/admin/product" id="nav_product" class=""><i class="lnr lnr-store"></i> <span>Product</span></a></li>
-						<li><a href="#" id="nav_order" class=""><i class="lnr lnr-tag"></i> <span>Order</span></a></li>
+                        <li>
+							<a href="#subPages" id="nav_order" data-toggle="collapse" class="collapsed"><i class="lnr lnr-tag"></i> <span>Order</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages" class="collapse ">
+								<ul class="nav">
+									<li><a href="/admin/order" class="">Data Order</a></li>
+									<li><a href="/admin/order/history" class="">History Order</a></li>
+								</ul>
+							</div>
+						</li>
+                        <li><a href="/admin/setting" id="nav_setting" class=""><i class="lnr lnr-cog"></i> <span>General Setting</span></a></li>
 					</ul>
 				</nav>
 			</div>

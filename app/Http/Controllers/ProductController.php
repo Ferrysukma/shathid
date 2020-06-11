@@ -16,6 +16,7 @@ class ProductController extends Controller
     {
         $this->base_url = Controller::api();
         $this->key      = Controller::key();
+        $this->profile  = Controller::profile();
     }
 
     public function index($id)
@@ -42,15 +43,18 @@ class ProductController extends Controller
 
         return view('product.detail', [
             'product'   => $product,
-            'province'  => $province
+            'province'  => $province,
+            'profile'   => $this->profile
         ]);
     }
 
     public function get_city(Request $request)
     {
+        $provinceId = explode('-', $request->province)[0];
+
         $client  = new Client();
         // API Get City
-        $url     = $this->base_url . 'city?province=' . $request->provinceId;
+        $url     = $this->base_url . 'city?province=' . $provinceId;
         $request = $client->get($url, [
             'headers'   => [
                 'key' => $this->key
@@ -71,6 +75,9 @@ class ProductController extends Controller
     public function get_courier(Request $request)
     {
         $weight  = $request->qty * 250;
+        $cityId  = explode('-', $request->city)[0];
+        $profile = $this->profile;
+        $origin  = $profile->profile_city_id;
 
         $client  = new Client();
         // API Get City
@@ -82,11 +89,11 @@ class ProductController extends Controller
             'multipart' => [
                 [
                     'name'     => 'origin',
-                    'contents' => 22,
+                    'contents' => $origin,
                 ],
                 [
                     'name'     => 'destination',
-                    'contents' => $request->city,
+                    'contents' => $cityId,
                 ],
                 [
                     'name'     => 'weight',
@@ -108,5 +115,47 @@ class ProductController extends Controller
         }
 
         return json_encode($paket);
+    }
+
+    public function order(Request $request)
+    {
+        $price      = $request->price * $request->qty;
+        if ($request->type == 'courier') {
+            $service    = explode('-', $request->cost)[0];
+            $province   = explode('-', $request->province)[1];
+            $provinceId = explode('-', $request->province)[0];
+            $city       = explode('-', $request->city)[1];
+            $cityId     = explode('-', $request->city)[0];
+        } else {
+            $service    = null;
+            $province   = null;
+            $provinceId = null;
+            $city       = null;
+            $cityId     = null;
+        }
+
+        DB::table('order')->insert([
+            'order_product_id'    => $request->product_id,
+            'order_product_name'  => $request->product_name,
+            'order_product_image' => $request->product_image,
+            'order_product_price' => $request->price,
+            'order_name'          => $request->name,
+            'order_phone'         => $request->phone,
+            'order_size'          => $request->size,
+            'order_qty'           => $request->qty,
+            'order_price'         => $price,
+            'order_address'       => $request->address,
+            'order_type'          => $request->type,
+            'order_courier'       => $request->courier,
+            'order_service'       => $service,
+            'order_province'      => $province,
+            'order_province_id'   => $provinceId,
+            'order_city'          => $city,
+            'order_city_id'       => $cityId,
+            'order_ongkir'        => $request->ongkir,
+            'order_status'        => 1,
+        ]);
+
+        return redirect('/');
     }
 }

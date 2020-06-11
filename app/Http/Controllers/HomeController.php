@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->profile = Controller::profile();
+    }
+
     public function index()
     {
         // Get Image Banner
@@ -16,7 +21,8 @@ class HomeController extends Controller
 
         return view('home.index', [
             'banners'   => $banner,
-            'products'  => $product
+            'products'  => $product,
+            'profile'   => $this->profile
         ]);
     }
 
@@ -35,7 +41,8 @@ class HomeController extends Controller
 
         return view('home.product_category', [
             'products' => $product,
-            'category' => $category
+            'category' => $category,
+            'profile'  => $this->profile
         ]);
     }
 }

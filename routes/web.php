@@ -22,6 +22,7 @@ Route::get('/product/category/{categories}', 'HomeController@product_category');
 Route::get('/product/{id}', 'ProductController@index');
 Route::post('/get_city', 'ProductController@get_city');
 Route::post('/get_courier', 'ProductController@get_courier');
+Route::post('/product/order', 'ProductController@order');
 
 
 // Admin
@@ -46,5 +47,20 @@ Route::group(['prefix' => '/admin'], function () {
         Route::post('/product/delete_product', 'Admin\ProductController@delete_process');
         Route::get('/product/edit/{id}', 'Admin\ProductController@edit');
         Route::post('/product/edit_product_process', 'Admin\ProductController@edit_process');
+
+        // Admin Order
+        Route::get('/order', 'Admin\OrderController@index');
+        Route::get('/order/data/{type}', 'Admin\OrderController@data');
+        Route::post('/order/accept_order', 'Admin\OrderController@accept');
+        Route::post('/order/cancel_order', 'Admin\OrderController@cancel');
+        Route::post('/order/finish_order', 'Admin\OrderController@finish');
+        Route::get('/order/history', 'Admin\OrderController@history');
+        Route::get('/order/history/data/{type}', 'Admin\OrderController@history_data');
+        Route::get('/order/detail/{id}/{status}', 'Admin\OrderController@detail');
+
+        // General Setting
+        Route::get('/setting', 'Admin\SettingController@index');
+        Route::post('/setting/get_city_admin', 'Admin\SettingController@get_city');
+        Route::post('/setting/general_setting', 'Admin\SettingController@general_setting');
     });
 });
